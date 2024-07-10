@@ -18,7 +18,7 @@ export default defineNuxtConfig({
         { name: 'theme-color', content: '#ECDC5A' },
       ],
       templateParams: {
-        separator: '·',
+        separator: ' - ',
       },
     },
   },
@@ -82,15 +82,15 @@ export default defineNuxtConfig({
     ],
   },
   site: {
-    url: 'https://unjs.io',
-    name: 'UnJS',
-    description: 'Agnostic Excellence: JavaScript Libraries, Tools, and Utilities, Crafted to Elevate Your Coding Journey.',
+    url: 'https://unjs.zhcndoc.com',
+    name: 'UnJS 中文文档',
+    description: '不可知论的卓越：JavaScript库、工具和实用程序，旨在提升您的编码旅程。',
   },
   schemaOrg: {
     identity: {
-      name: 'UnJS',
+      name: 'UnJS 中文文档',
       type: 'Organization',
-      logo: 'https://unjs.io/favicon.svg',
+      logo: 'https://unjs.zhcndoc.com/favicon.svg',
       sameAs: [
         'https://github.com/unjs',
         'https://twitter.com/unjsio',

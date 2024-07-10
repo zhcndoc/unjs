@@ -22,7 +22,7 @@ export default defineEventHandler(async (event) => {
         monthlyDownloads,
         contributors: contributors.length,
         path: pkg._path,
-        url: `https://unjs.io${pkg._path}`,
+        url: `https://unjs.zhcndoc.com${pkg._path}`,
         npm: pkg.npm?.name
           ? {
               ...pkg.npm,
@@ -31,7 +31,7 @@ export default defineEventHandler(async (event) => {
             }
           : undefined,
         logoPath: toPackageLogo(pkg.title),
-        logoUrl: `https://unjs.io${toPackageLogo(pkg.title)}`,
+        logoUrl: `https://unjs.zhcndoc.com${toPackageLogo(pkg.title)}`,
       } satisfies Package
     },
     ),

@@ -69,19 +69,19 @@ export default defineAppConfig({
       docs: 'https://validator.w3.org/feed/docs/rss2.html',
     },
     footer: {
-      quote: 'Unlock the potential of your web development journey with UnJS - where innovation meets simplicity, and possibilities become limitless.',
+      quote: '使用 UnJS 释放您的 Web 开发旅程的潜能 - 创新与简单相遇，可能性变得无限。',
       menu: [
         {
-          title: 'Community',
+          title: '社区',
           items: [
             {
-              title: 'Contribute',
+              title: '贡献',
               url: 'https://github.com/unjs/governance',
               rel: 'noopener',
               target: '_blank',
             },
             {
-              title: 'Discussions',
+              title: '讨论',
               url: 'https://github.com/unjs/community/discussions',
               rel: 'noopener',
               target: '_blank',
@@ -93,7 +93,7 @@ export default defineAppConfig({
             //   target: null,
             // },
             {
-              title: 'Contact us',
+              title: '联系我们',
               url: 'mailto:hi@unjs.io',
               rel: null,
               target: null,
@@ -101,7 +101,7 @@ export default defineAppConfig({
           ],
         },
         {
-          title: 'Content',
+          title: '内容',
           items: [
           //   {
           //     title: 'Learn',
@@ -122,7 +122,7 @@ export default defineAppConfig({
           //     target: null,
           //   },
             {
-              title: 'Search',
+              title: '搜索',
               url: '/search',
               rel: null,
               target: null,
@@ -133,14 +133,14 @@ export default defineAppConfig({
           title: 'UnJS',
           items: [
             {
-              title: 'Website',
-              url: 'https://unjs.io',
+              title: '中文文档',
+              url: 'https://unjs.zhcndoc.com',
               rel: 'noopener',
               target: '_blank',
             },
             {
-              title: 'Design Kit',
-              url: '/design-kit?utm_source=unjs&utm_medium=footer',
+              title: '设计套件',
+              url: '/design-kit',
             },
             {
               title: 'GitHub',

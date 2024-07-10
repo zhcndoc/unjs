@@ -10,12 +10,12 @@ if (error.value) {
 }
 
 useSeoMeta({
-  titleTemplate: '%siteName: %pageTitle',
-  title: 'Unleash JavaScript\'s Potential',
+  titleTemplate: '%siteName - %pageTitle',
+  title: '释放 JavaScript 的潜能',
   description: page.value?.description,
 })
 defineOgImageComponent('OgImagePage', {
-  title: 'UnJS',
+  title: 'UnJS 中文文档',
   illustration: '/assets/header/dark/home.png',
 })
 useTrackPageview()

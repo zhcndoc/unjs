@@ -6,19 +6,19 @@ const github = website.value.socials.github
 const navigation = [
   {
     path: '/packages',
-    title: 'Packages',
+    title: '软件包',
   },
   runtimeConfig.public.learn && {
     path: '/learn',
-    title: 'Learn',
+    title: '学习',
   },
   {
     path: '/blog',
-    title: 'Blog',
+    title: '博客',
   },
   {
     path: '/relations',
-    title: 'Relations',
+    title: '关系图',
   },
 ].filter(Boolean) as { path: string, title: string }[]
 
@@ -47,7 +47,7 @@ const uiButton = { font: 'font-semibold', color: { gray: { ghost: 'text-gray-950
 const activeClassButton = 'bg-primary bg-opacity-40 dark:bg-opacity-30'
 
 function toDesignKit() {
-  navigateTo('/design-kit?utm_source=unjs.io&utm_medium=header-icon')
+  navigateTo('/design-kit')
 }
 </script>
 
@@ -55,7 +55,7 @@ function toDesignKit() {
   <div class="h-16 border-b border-gray-100 dark:border-gray-800">
     <header class="h-full px-4 container mx-auto xl:max-w-7xl md:px-6 grid grid-cols-2 lg:grid-cols-3 items-center bg-white/40 backdrop-blur-sm dark:bg-gray-900/60">
       <div class="flex items-center">
-        <NuxtLink to="/?utm_source=unjs.io&utm_medium=header-icon&utm_campaign=unjs.io" @click.right.prevent="toDesignKit()">
+        <NuxtLink to="/" @click.right.prevent="toDesignKit()">
           <AppLogo />
         </NuxtLink>
       </div>

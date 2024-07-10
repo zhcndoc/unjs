@@ -45,7 +45,7 @@ export function usePackages() {
   const orderByOptions = [
     {
       id: 'title',
-      label: 'Name',
+      label: '名称',
     },
     {
       id: 'stars',
@@ -53,11 +53,11 @@ export function usePackages() {
     },
     {
       id: 'monthlyDownloads',
-      label: 'Monthly Downloads',
+      label: '下载量',
     },
     {
       id: 'contributors',
-      label: 'Contributors',
+      label: '贡献者',
     },
   ]
   const defaultOrderBy: string = orderByOptions[0].id

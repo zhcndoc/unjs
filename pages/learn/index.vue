@@ -53,22 +53,22 @@ const categories = [{
     <section class="grid grid-cols-1 lg:grid-cols-2 items-center gap-4 lg:gap-16">
       <div class="flex flex-col gap-2">
         <h2 class="text-gray-950 dark:text-gray-50 text-xl lg:text-4xl font-bold">
-          Find the article you need
+          找到你需要的文章
         </h2>
         <p class="text-gray-500 dark:text-gray-400 max-w-lg">
-          Our articles are organized into categories to help you find the right content for your needs, from beginner to more advanced topics.
+          我们的文章分为不同的类别，以帮助您找到适合您需求的内容，从初学者到更高级的主题。
         </p>
 
         <div class="mt-6 flex ">
-          <UButton to="/learn/articles?utm_source=unjs.io&utm_medium=learn-article-you-need" color="white" variant="solid" size="lg" trailing-icon="i-heroicons-chevron-right-20-solid">
-            All articles
+          <UButton to="/learn/articles" color="white" variant="solid" size="lg" trailing-icon="i-heroicons-chevron-right-20-solid">
+            所有文章
           </UButton>
         </div>
       </div>
       <ol class="grid grid-cols-2 gap-4 lg:gap-8">
         <li v-for="category in categories" :key="category.label" class="relative p-4 rounded-lg ring-1 ring-gray-300 dark:ring-gray-700 shadow-sm hover:shadow-none hover:ring-primary dark:hover:ring-primary transition ease-in">
           <h3 class="md:text-xl font-semibold dark:text-gray-50">
-            <NuxtLink class="absolute inset-0" :to="`/learn/articles?categories[]=${category.id}&utm_source=unjs.io&utm_medium=learn-category`" />
+            <NuxtLink class="absolute inset-0" :to="`/learn/articles?categories[]=${category.id}`" />
             {{ category.label }}
           </h3>
           <p class="mt-1 dark:text-zinc-400">
@@ -80,9 +80,9 @@ const categories = [{
 
     <section class="mt-8 lg:mt-16">
       <h2 class="text-gray-950 dark:text-gray-50 text-xl font-semibold">
-        <NuxtLink class="flex items-center" to="/learn/articles?order=-1&orderBy=publishedAt&utm_source=unjs.io&utm_medium=learn-latest-articles">
+        <NuxtLink class="flex items-center" to="/learn/articles?order=-1&orderBy=publishedAt">
           <span>
-            Latest articles
+            最新文章
           </span>
           <span class="i-heroicons-chevron-right text-primary h-5 w-5" />
         </NuxtLink>
@@ -106,9 +106,9 @@ const categories = [{
 
     <section class="mt-8 lg:mt-16">
       <h2 class="text-gray-950 dark:text-gray-50 text-xl font-semibold">
-        <NuxtLink class="flex items-center" to="/blog?order=-1&orderBy=publishedAt&utm_source=unjs.io&utm_medium=learn-latest-blog">
+        <NuxtLink class="flex items-center" to="/blog?order=-1&orderBy=publishedAt">
           <span>
-            Stay up to date
+            保持最新状态
           </span>
           <span class="i-heroicons-chevron-right text-primary h-5 w-5" />
         </NuxtLink>
@@ -116,7 +116,7 @@ const categories = [{
       <AppListGrid class="mt-3">
         <AppListGridItem v-for="item in latestBlog" :key="item._path">
           <BlogCard
-            :path="`${item._path!}?utm_source=unjs.io&utm_medium=learn-latest-blog`"
+            :path="`${item._path!}`"
             :title="item.title"
             :description="item.description"
             :published-at="item.publishedAt"
@@ -130,15 +130,15 @@ const categories = [{
 
     <section class="mt-8 lg:mt-16 py-16 flex flex-col items-center bg-gray-300/20 ring-gray-300 dark:bg-gray-700/20 rounded-lg ring-1 dark:ring-gray-700">
       <h2 class="text-gray-950 dark:text-gray-50 text-xl lg:text-4xl font-bold">
-        Get started now
+        立即开始
       </h2>
       <p class="mt-8 text-gray-500 dark:text-gray-400 max-w-lg text-center">
-        Start learning, improve your JavaScript skills and assemble packages to build better apps, websites and projects.
+        开始学习，提高你的 JavaScript 技能，并组装包以构建更好的应用程序、网站和项目。
       </p>
 
       <div class="mt-12">
-        <UButton :to="`${randomArticle}/?utm_source=unjs.io&utm_medium=learn-start-now`" color="primary" variant="solid" size="lg" :ui="{ variant: { solid: 'text-gray-950 dark:text-gray-50 bg-primary bg-opacity-40 dark:bg-opacity-30  hover:bg-primary/60 dark:hover:bg-primary/40' } }" trailing-icon="i-heroicons-chevron-right-20-solid">
-          Read an article
+        <UButton :to="`${randomArticle}/`" color="primary" variant="solid" size="lg" :ui="{ variant: { solid: 'text-gray-950 dark:text-gray-50 bg-primary bg-opacity-40 dark:bg-opacity-30  hover:bg-primary/60 dark:hover:bg-primary/40' } }" trailing-icon="i-heroicons-chevron-right-20-solid">
+          阅读一篇文章
         </UButton>
       </div>
     </section>

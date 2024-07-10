@@ -62,7 +62,7 @@ function openFilter() {
   <UModal v-model="isFilterOpen" :ui="{ base: 'overflow-visible' }">
     <UCard :ui="{ base: 'overflow-visible' }">
       <h2 class="text-2xl font-bold mb-6">
-        Filters
+        筛选
       </h2>
 
       <div class="grid grid-cols-2 gap-4">
@@ -78,7 +78,7 @@ function openFilter() {
           variant="ghost"
           @click="$emit('reset')"
         >
-          Reset
+          重置
         </UButton>
         <UButton
           v-model="isFilterOpen"
@@ -88,7 +88,7 @@ function openFilter() {
           :title="isFilterOpen ? 'Close filters' : 'Open filters'"
           @click="openFilter()"
         >
-          Close
+          关闭
         </UButton>
       </div>
     </UCard>

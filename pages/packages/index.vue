@@ -62,7 +62,7 @@ watchDebounced(q, () => {
                 {{ numberOfPackages }}
               </span>
               <span>
-                Packages
+                软件包
               </span>
             </div>
             <div class="flex flex-col gap-2">
@@ -70,7 +70,7 @@ watchDebounced(q, () => {
                 {{ formatNumber(monthlyDownloads, 0) }}
               </span>
               <span>
-                Monthly Downloads
+                每月下载量
               </span>
             </div>
           </div>
@@ -80,11 +80,11 @@ watchDebounced(q, () => {
 
     <section>
       <h2 class="sr-only">
-        List of packages
+        软件包列表
       </h2>
 
       <AppListTopBar
-        :search="q" :order="order" :order-by="orderBy" search-placeholder="Search a package" :order-by-options="orderByOptions" @reset="reset"
+        :search="q" :order="order" :order-by="orderBy" search-placeholder="搜索软件包" :order-by-options="orderByOptions" @reset="reset"
         @update:search="updateQuery({ q: $event })" @update:order="updateQuery({ order: $event })" @update:order-by="updateQuery({ orderBy: $event })"
       />
 
@@ -100,7 +100,7 @@ watchDebounced(q, () => {
           />
         </AppListGridItem>
         <AppListGridEmpty v-if="packages && packages.length === 0">
-          No packages found
+          未找到任何软件包
         </AppListGridEmpty>
       </AppListGrid>
     </section>

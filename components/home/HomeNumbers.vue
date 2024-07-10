@@ -30,10 +30,10 @@ const { data: packages } = await useAsyncData('home:numbers', () => {
       {{ title }}
     </h2>
     <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
-      <HomeNumbersItem v-if="packages" label="Packages" :value="packages?.packages" />
-      <HomeNumbersItem v-if="packages" label="Stars" :value="packages?.stars" />
-      <HomeNumbersItem v-if="packages" label="Monthly Downloads" :value="packages?.monthlyDownloads" />
-      <HomeNumbersItem v-if="packages" label="Followers on GitHub" :value="packages?.followers" />
+      <HomeNumbersItem v-if="packages" label="软件包" :value="packages?.packages" />
+      <HomeNumbersItem v-if="packages" label="GitHub 上的 Stars" :value="packages?.stars" />
+      <HomeNumbersItem v-if="packages" label="每月下载量" :value="packages?.monthlyDownloads" />
+      <HomeNumbersItem v-if="packages" label="GitHub 上的关注者" :value="packages?.followers" />
     </div>
   </section>
 </template>
