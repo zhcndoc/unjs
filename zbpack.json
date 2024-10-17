@@ -1,0 +1,4 @@
+{
+  "build_command": "npx nuxi build --prerender=true --preset=node-server",
+  "output_dir": ".output/public"
+}
