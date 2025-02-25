@@ -3,7 +3,7 @@ title: Footer License
 ---
 
 <p>
-    <a target="_blank" href="https://www.zhcndoc.com?ref=unjs">
+    <a target="_blank" href="https://www.zhcndoc.com">
         简中文档
     </a>
     -
