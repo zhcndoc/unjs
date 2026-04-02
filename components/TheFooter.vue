@@ -19,7 +19,7 @@ const uiButton = { color: { gray: { ghost: 'text-gray-500 hover:text-gray-800 da
           <NuxtLink to="/" class="block">
             <AppLogo />
           </NuxtLink>
-          <p class="max-w-lg text-sm md:text-base text-gray-500 dark:text-gray-400 italic">
+          <p class="max-w-lg text-sm md:text-base text-gray-500 dark:text-gray-400">
             {{ website.footer.quote }}
           </p>
         </div>

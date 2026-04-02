@@ -1,7 +1,8 @@
 {
-  "cache_dependencies": false,
-  "build_command": "pnpm run generate",
-  "output_dir": "dist",
+  "app_dir": "/",
+  "build_command": "pnpm run build",
   "ignore_dockerfile": true,
-  "serverless": false
+  "install_command": "npm install -g pnpm && pnpm install",
+  "output_dir": ".output/public",
+  "start_command": ""
 }

@@ -77,9 +77,12 @@ defineOgImageComponent('OgImagePackage', {
 
       <ContentRendererMarkdown v-if="readme" :value="readme" />
 
+      <div class="wwads-cn wwads-horizontal w-full my-4" data-id="354" />
+
       <template #nav>
+        <div class="wwads-cn wwads-vertical max-w-[200px] !mt-0 mb-4" data-id="354" />
         <UButton :to="page.documentation" rel="noopener" size="lg" color="gray" :ui="{ base: 'w-full justify-center' }">
-          Documentation
+          文档
         </UButton>
         <ProseNavGroup no-disclosure>
           <template #links>
@@ -103,16 +106,16 @@ defineOgImageComponent('OgImagePackage', {
           </template>
           <template #links>
             <ProseNavGroupLink :to="toGitHubRepo(page.github.owner, page.github.repo)" target="_blank" icon="i-simple-icons-github">
-              View source
+              查看源码
             </ProseNavGroupLink>
             <ProseNavGroupLink v-if="page.examples.link" :to="page.examples.link" target="_blank" icon="i-simple-icons-github">
-              Examples
+              示例
             </ProseNavGroupLink>
             <ProseNavGroupLink
               :to="toGitHubIssue(page.github.owner, page.github.repo)" target="_blank"
               icon="i-simple-icons-github"
             >
-              Report an issue
+              报告问题
             </ProseNavGroupLink>
           </template>
         </ProseNavGroup>
@@ -120,20 +123,20 @@ defineOgImageComponent('OgImagePackage', {
         <template v-if="hasResources">
           <ProseNavGroup icon="i-heroicons-beaker-solid">
             <template #title>
-              Resources
+              资源
             </template>
             <template #links>
               <ProseNavGroupLink v-if="page.npm" :to="`/relations?u[]=${page.npm.name}`" icon="i-ph-graph">
-                Explore Relations
+                探索关系
               </ProseNavGroupLink>
               <ProseNavGroupLink v-if="page.npm" :to="toNpmPackage(page.npm.name)" target="_blank" icon="i-simple-icons-npm">
-                Discover on npm
+                在 npm 上发现
               </ProseNavGroupLink>
               <ProseNavGroupLink v-if="page.playgrounds?.stackblitz" :to="page.playgrounds.stackblitz" target="_blank" icon="i-simple-icons-stackblitz">
-                Open on Stackblitz
+                在 Stackblitz 打开
               </ProseNavGroupLink>
               <ProseNavGroupLink v-if="page.playgrounds?.codesandbox" :to="page.playgrounds.codesandbox" target="_blank" icon="i-simple-icons-codesandbox">
-                Open on CodeSandbox
+                在 CodeSandbox 打开
               </ProseNavGroupLink>
             </template>
           </ProseNavGroup>

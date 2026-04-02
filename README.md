@@ -1,5 +1,12 @@
-## UnJS 中文文档
+# UnJS Website
 
-本项目由[简中文档](https://www.zhcndoc.com/)社区提供翻译和维护。
+UnJS website [Content](./content/) and Design!
 
-上游仓库地址：https://github.com/unjs/website
+> https://unjs.io
+
+## Development
+
+- Clone repository
+- Enable corepack with `corepack enable pnpm`
+- Install dependencies with `pnpm install`
+- Start development server with `pnpm dev`
