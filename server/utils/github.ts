@@ -1,3 +1,6 @@
+import { Buffer } from 'node:buffer'
+import { useRuntimeConfig } from '#imports'
+
 export const cachedUnJSGitHubOrg = defineCachedFunction(async () => {
   const org = await $fetch<{ followers: number }>('https://api.github.com/orgs/unjs')
 
@@ -74,10 +77,34 @@ export const cachedLatestRelease = defineCachedFunction(async (owner: string, re
   getKey: (owner: string, repo: string) => `latestRelease:${owner}/${repo}`,
 })
 
-export const cachedGitHubReadme = defineCachedFunction(async (owner: string, repo: string) => {
-  const data = await $fetch<{ markdown: string }>(`https://ungh.cc/repos/${owner}/${repo}/readme`)
+interface GitHubReadmeResponse {
+  content: string
+  encoding: string
+}
 
-  return data.markdown
+function getGitHubHeaders(): Record<string, string> {
+  const { githubToken } = useRuntimeConfig()
+
+  const headers: Record<string, string> = {
+    'Accept': 'application/vnd.github+json',
+    'X-GitHub-Api-Version': '2022-11-28',
+  }
+
+  if (githubToken)
+    headers.Authorization = `Bearer ${githubToken}`
+
+  return headers
+}
+
+export const cachedGitHubReadme = defineCachedFunction(async (owner: string, repo: string) => {
+  const data = await $fetch<GitHubReadmeResponse>(`https://api.github.com/repos/${owner}/${repo}/readme`, {
+    headers: getGitHubHeaders(),
+  })
+
+  if (data.encoding !== 'base64')
+    return data.content
+
+  return Buffer.from(data.content.replace(/\r?\n/g, ''), 'base64').toString('utf8')
 }, {
   maxAge: 1000 * 60 * 60 * 24, // 24 hours
   group: 'github',
