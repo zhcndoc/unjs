@@ -2,8 +2,8 @@
 defineProps<{
   title: string
   description: string
-  stars: number
-  monthlyDownloads?: number
+  stars?: number | null
+  monthlyDownloads?: number | null
 }>()
 </script>
 
@@ -37,7 +37,7 @@ defineProps<{
         </div>
         <div class="flex flex-row items-end justify-between">
           <div class="flex flex-row gap-12 text-[#9ca3af] font-medium">
-            <div class="flex flex-row items-end">
+            <div v-if="stars" class="flex flex-row items-end">
               <Icon name="heroicons:star-solid" size="32px" class="" />
               <div class="ml-2 flex flex-col">
                 <span class=" text-[20px] leading-[16px]">
