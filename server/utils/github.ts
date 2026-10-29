@@ -1,8 +1,7 @@
 import { Buffer } from 'node:buffer'
-import { useRuntimeConfig } from '#imports'
 
 export const cachedUnJSGitHubOrg = defineCachedFunction(async () => {
-  const org = await $fetch<{ followers: number }>('https://api.github.com/orgs/unjs')
+  const org = await $fetch<{ followers: number }>('https://anymeta.top/github/orgs/unjs')
 
   return org
 }, {
@@ -13,9 +12,9 @@ export const cachedUnJSGitHubOrg = defineCachedFunction(async () => {
 })
 
 export const cachedGitHubRepos = defineCachedFunction(async () => {
-  const data = await $fetch<{ repos: { stars: number }[] }>('https://ungh.cc/orgs/unjs/repos')
+  const data = await $fetch<{ stargazers_count: number }[]>('https://anymeta.top/github/orgs/unjs/repos?per_page=100')
 
-  return data.repos
+  return data.map(repo => ({ stars: repo.stargazers_count }))
 }, {
   maxAge: 1000 * 60 * 60 * 24, // 24 hours
   group: 'github',
@@ -24,9 +23,9 @@ export const cachedGitHubRepos = defineCachedFunction(async () => {
 })
 
 const cachedGitHubRepo = defineCachedFunction(async (owner: string, repo: string) => {
-  const data = await $fetch<{ repo: { stars: number } }>(`https://ungh.cc/repos/${owner}/${repo}`)
+  const data = await $fetch<{ stargazers_count: number }>(`https://anymeta.top/github/repos/${owner}/${repo}`)
 
-  return data.repo
+  return { stars: data.stargazers_count }
 }, {
   maxAge: 1000 * 60 * 60 * 24, // 24 hours
   group: 'github',
@@ -44,9 +43,9 @@ export async function fetchStars(owner: string, repo: string): Promise<number> {
 }
 
 const cachedGitHubContributors = defineCachedFunction(async (owner: string, repo: string) => {
-  const data = await $fetch<{ contributors: { id: number, username: string, contributions: number }[] }>(`https://ungh.cc/repos/${owner}/${repo}/contributors`)
+  const data = await $fetch<{ id: number, login: string, contributions: number }[] | undefined>(`https://anymeta.top/github/repos/${owner}/${repo}/contributors?per_page=100`)
 
-  return data.contributors
+  return (data || []).map(({ id, login, contributions }) => ({ id, username: login, contributions }))
 }, {
   maxAge: 1000 * 60 * 60 * 24, // 24 hours
   group: 'github',
@@ -67,9 +66,9 @@ export async function fetchContributors(owner: string, repo: string): Promise<{ 
 }
 
 export const cachedLatestRelease = defineCachedFunction(async (owner: string, repo: string) => {
-  const data = await $fetch<{ release: { tag: string } }>(`https://ungh.cc/repos/${owner}/${repo}/releases/latest`)
+  const data = await $fetch<{ tag_name: string }>(`https://anymeta.top/github/repos/${owner}/${repo}/releases/latest`)
 
-  return data.release
+  return { tag: data.tag_name }
 }, {
   maxAge: 1000 * 60 * 60 * 24, // 24 hours
   group: 'github',
@@ -77,34 +76,10 @@ export const cachedLatestRelease = defineCachedFunction(async (owner: string, re
   getKey: (owner: string, repo: string) => `latestRelease:${owner}/${repo}`,
 })
 
-interface GitHubReadmeResponse {
-  content: string
-  encoding: string
-}
-
-function getGitHubHeaders(): Record<string, string> {
-  const { githubToken } = useRuntimeConfig()
-
-  const headers: Record<string, string> = {
-    'Accept': 'application/vnd.github+json',
-    'X-GitHub-Api-Version': '2022-11-28',
-  }
-
-  if (githubToken)
-    headers.Authorization = `Bearer ${githubToken}`
-
-  return headers
-}
-
 export const cachedGitHubReadme = defineCachedFunction(async (owner: string, repo: string) => {
-  const data = await $fetch<GitHubReadmeResponse>(`https://api.github.com/repos/${owner}/${repo}/readme`, {
-    headers: getGitHubHeaders(),
-  })
+  const data = await $fetch<{ content: string, encoding: string }>(`https://anymeta.top/github/repos/${owner}/${repo}/readme`)
 
-  if (data.encoding !== 'base64')
-    return data.content
-
-  return Buffer.from(data.content.replace(/\r?\n/g, ''), 'base64').toString('utf8')
+  return data.encoding === 'base64' ? Buffer.from(data.content, 'base64').toString('utf8') : data.content
 }, {
   maxAge: 1000 * 60 * 60 * 24, // 24 hours
   group: 'github',

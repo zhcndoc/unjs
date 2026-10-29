@@ -28,7 +28,7 @@ async function fetchLatestRelease(owner: string, repo: string): Promise<string |
     return release.tag
   }
   catch (error: unknown) {
-    if (error instanceof FetchError)
+    if (error instanceof FetchError && error.status === 404)
       return null
 
     throw error

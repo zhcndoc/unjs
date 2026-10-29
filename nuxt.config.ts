@@ -3,7 +3,6 @@ import packagesRedirects from './config/packages-redirects'
 
 export default defineNuxtConfig({
   runtimeConfig: {
-    githubToken: '',
     public: {
       // Use a flag to merge the PRs quickly without pushing it to the production
       learn: false,
@@ -49,9 +48,9 @@ export default defineNuxtConfig({
         '/packages/template',
         '/packages/src/',
         '/packages/test/',
+        '/packages/examples/',
         '/packages/LICENSE',
         '/packages/LICENCE',
-        '/packages/package.json',
       ],
     },
     routeRules: {
